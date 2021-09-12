@@ -1,0 +1,24 @@
+{% extends 'blog/base.blog.html' %}
+{% load static %}
+{% block title %}{{post.title}}{%endblock%}
+{% block content%}
+<div class="main" style="width:1100px; height:auto">
+        <aside>
+            <div class="author" style="height: 48px;">
+            <!-- <p class="fontchoice">{{post.tags}}</p> -->
+            <p class="fontchoice">{{post.date}}</p>
+            </div>
+        <div class="post fontchoice">{{ post.body }}</div>
+        </aside>
+    <div class="photo">
+        <img src="{% static 'img/Guy_hands.png'%}">
+        <p class="fontchoice">Здесь могла быть ваша реклама, но её нет :XD</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block admin_panel%}
+<a href= "{% url 'post_update_url' slug=post.slug %}" class="btn btn-primary">Edit</a>
+<a href= "{% url 'post_create_url' %}" class="btn btn-success">Create</a>
+<a href= "{% url 'post_delete_url' slug=post.slug %}" class="btn btn-info">Delete</a>
+{% endblock %}
